@@ -33,7 +33,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build2') {
             when {
                 expression {
                     allof {
