@@ -11,12 +11,13 @@ pipeline {
     stages {
 
         stage('Build') {
-            when {
+         /*   when {
                 branch "Main"
-            }            
+            }            */
             steps {
                 echo " Die BuildID lautet: ${BUILD_ID}  Jobname ist: ${JOB_NAME}  Build mit der Nummer ${BUILD_NUMBER} wird gebaut  Diese pipline wurde erstellt von ${AUTHOR} und ist die Software Version ${SOFTWARE_VERSION}"
                 bat '''
+                git branch
                 mvn package
                 cd target
                 dir
