@@ -15,7 +15,7 @@ pipeline {
             when {
                 expression {
                     allof {
-                    return env.GIT_BRANCH=="origin/mainblaba"
+                    return env.GIT_BRANCH=="origin/main"
                     triggeredBy "SCMTrigger"
                     }
                 }
@@ -37,7 +37,7 @@ pipeline {
             when {
                 expression {
                     allof {
-                    return env.GIT_BRANCH=="origin/mainblaba"
+                    return env.GIT_BRANCH=="origin/main"
                     triggeredBy "TimerTrigger"
                     }
                 }
