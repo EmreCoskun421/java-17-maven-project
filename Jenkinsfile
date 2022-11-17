@@ -13,11 +13,11 @@ pipeline {
 
         stage('Build') {
             when {
-                expression {
-                    allOf {
+                 allOf {
+                    
                     return env.GIT_BRANCH=="origin/main"
                     triggeredBy "SCMTrigger"
-                    }
+                    
                 }
             }            
             steps {
@@ -35,11 +35,11 @@ pipeline {
 
         stage('Build2') {
             when {
-                expression {
-                    allOf {
+                allOf {
+                    
                     return env.GIT_BRANCH=="origin/main"
                     triggeredBy "TimerTrigger"
-                    }
+                    
                 }
             }                
             steps {
