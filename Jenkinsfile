@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        pollSCM('* * * * *')
+    }    
     environment {
         BUILD_ID=007
         AUTHOR="Emre Coskun"
