@@ -4,12 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                bat 'mvn package'
+                echo ' Die BuildID lautet: $BUILD_ID  Jobname ist: $JOB_NAME  Build mit der Nummer $BUILD_NUMBER wird gebaut '
                 bat '''
+                mvn package
                 cd target
                 dir
+
                 '''
+
+                bat ''
+            }
+        }
+        stage ("docker build") {
+            steps{
+ 
             }
         }
 
