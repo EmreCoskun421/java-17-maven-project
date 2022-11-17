@@ -6,17 +6,13 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat 'mvn package'
+                bat '''
+                cd target
+                dir
+                '''
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+
+ 
     }
 }
