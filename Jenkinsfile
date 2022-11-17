@@ -3,7 +3,7 @@ pipeline {
     environment {
         BUILD_ID=007
         AUTHOR="Emre Coskun"
-        SOFTWARE_VERSION=0.0.1    
+        SOFTWARE_VERSION="0.0.1"    
     }
     stages {
         stage('Build') {
