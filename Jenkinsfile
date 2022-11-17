@@ -13,10 +13,9 @@ pipeline {
                 mvn package
                 cd target
                 dir
-
                 '''
-
-                bat ''
+               archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+               
             }
         }
 
