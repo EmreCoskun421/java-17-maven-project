@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        cron('* * * * *')
+        pollSCM('* * * * *')
     }    
     environment {
         BUILD_ID=007
