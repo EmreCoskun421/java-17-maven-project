@@ -39,7 +39,7 @@ pipeline {
 
         stage('Build2') {
             when {
-                allOf {
+                 anyOf {
                     triggeredBy "TimerTrigger"
                     expression {
                         return env.GIT_BRANCH=="origin/main"
