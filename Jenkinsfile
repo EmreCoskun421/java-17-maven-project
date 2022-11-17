@@ -13,13 +13,17 @@ pipeline {
 
         stage('Build') {
             when {
-                 allOf {
-                    
-                    return env.GIT_BRANCH=="origin/main"
+                allOf {
                     triggeredBy "SCMTrigger"
+                    expression {
+                        return env.GIT_BRANCH=="origin/main"
+                    }
+                    
+                    
                     
                 }
-            }            
+            }                  
+        
             steps {
                 echo " Die BuildID lautet: ${BUILD_ID}  Jobname ist: ${JOB_NAME}  Build mit der Nummer ${BUILD_NUMBER} wird gebaut  Diese pipline wurde erstellt von ${AUTHOR} und ist die Software Version ${SOFTWARE_VERSION}  branch name ist: ${GIT_BRANCH}"
                 bat '''
@@ -36,9 +40,12 @@ pipeline {
         stage('Build2') {
             when {
                 allOf {
-                    
-                    return env.GIT_BRANCH=="origin/main"
                     triggeredBy "TimerTrigger"
+                    expression {
+                        return env.GIT_BRANCH=="origin/main"
+                    }
+                    
+                    
                     
                 }
             }                
