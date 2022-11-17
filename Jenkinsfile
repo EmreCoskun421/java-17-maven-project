@@ -18,7 +18,7 @@ pipeline {
                 dir
                 '''
                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-               
+                  
             }
         }
 
