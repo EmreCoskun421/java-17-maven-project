@@ -15,11 +15,7 @@ pipeline {
                 bat ''
             }
         }
-        stage ("docker build") {
-            steps{
- 
-            }
-        }
+
 
  
     }
