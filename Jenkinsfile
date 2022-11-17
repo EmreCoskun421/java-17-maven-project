@@ -2,6 +2,7 @@ pipeline {
     agent any
     triggers {
         pollSCM('* * * * *')
+        cron('@midnight')
     }    
     environment {
         BUILD_ID=007
@@ -13,7 +14,10 @@ pipeline {
         stage('Build') {
             when {
                 expression {
+                    allof {
                     return env.GIT_BRANCH=="origin/mainblaba"
+                    triggeredBy "SCMTrigger"
+                    }
                 }
             }            
             steps {
@@ -22,22 +26,29 @@ pipeline {
                 git branch
                 mvn package
                 cd target
-                dir
+                dir 
                 '''
                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                   
             }
         }
 
-        stage('Build2') {
-
+        stage('Build') {
+            when {
+                expression {
+                    allof {
+                    return env.GIT_BRANCH=="origin/mainblaba"
+                    triggeredBy "TimerTrigger"
+                    }
+                }
+            }                
             steps {
                 echo " Die BuildID lautet: ${BUILD_ID}  Jobname ist: ${JOB_NAME}  Build mit der Nummer ${BUILD_NUMBER} wird gebaut  Diese pipline wurde erstellt von ${AUTHOR} und ist die Software Version ${SOFTWARE_VERSION}  branch name ist: ${GIT_BRANCH}"
                 bat '''
                 git branch
                 mvn package
                 cd target
-                dir
+                dir 
                 '''
                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
                   
